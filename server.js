@@ -7,13 +7,10 @@ process.env.TWILIO_ACCOUNT_SID = 'AC5a7faa72917a998b94a7eaa2e35b76b3';
 process.env.TWILIO_AUTH_TOKEN = '7c05dff31faa2c7cc957a3e57526b99e';
 
 app.get('/', function(req, res) {
-	res.send(process.env.TWILIO_ACCOUNT_SID);
+	res.send(process.env.TWILIO_ACCOUNT_SID + ' / ' + process.env.TWILIO_AUTH_TOKEN);
 });
 
-app.post('/twilio', twilio.webhook({
-    url:'https://warm-harbor-4491.herokuapp.com/twilio',
-    protocol: 'https'
-}), function(request, response) {
+app.post('/twilio', function(request, response) {
      
     var twiml = new twilio.TwimlResponse();
     twiml.message('This HTTP request came from Twilio!');
@@ -22,7 +19,7 @@ app.post('/twilio', twilio.webhook({
         'Content-Type': 'text/xml'
     });
     
-    response.end(twiml);
+    response.end(twiml.toString());
 });
 
 app.listen(process.env.PORT || 3000);
