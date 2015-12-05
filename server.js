@@ -27,7 +27,7 @@ app.route('/getAllUserInfo/:location')
 app.route('/getUserData/:userID')
     .get(userInfo.getUserData);
 
-app.get('/conferenceRoom', function(request, response) {
+app.post('/conferenceRoom', function(request, response) {
     var twiml = new twilio.TwimlResponse();
     console.log('creating conference call room ' + request.query.room);
 
