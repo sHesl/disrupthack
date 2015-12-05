@@ -1,5 +1,5 @@
 var express = require('express'),
-    main = require('./server/main'),
+    watson = require('./server/watson'),
     twilio = require('twilio');
 
 var app = express();
@@ -13,7 +13,8 @@ app.get('/', function(req, res) {
 app.post('/twilio', function(request, response) {
      
     var twiml = new twilio.TwimlResponse();
-    twiml.message('This HTTP request came from Twilio!');
+    var textBody = watson.getHealthCareAdvice();
+    twiml.message(textBody);
 
     response.writeHead(200, {
         'Content-Type': 'text/xml'
