@@ -27,27 +27,48 @@ app.route('/getAllUserInfo/:location')
 app.route('/getUserData/:userID')
     .get(userInfo.getUserData);
 
-app.get('/conferenceRoom', function(req, res) {
+app.get('/conferenceRoom', function(request, response) {
     var twiml = new twilio.TwimlResponse();
+    console.log('creating conference call room ' + request.query.room);
+
+    twiml.dial(function(node) {
+        node.conference(request.query.room);
+    });
+
+    response.writeHead(200, {
+        'Content-Type': 'text/xml'
+    });
+    
+    response.end(twiml.toString());
 });
 
-app.post('/call', function(req, res) {
+app.post('/call', function(request, res) {
+    var doctorsNumber = '+447756068326';
+    var patientsNumber = '07941147361';
+    var twilioNumber = '+441547220127';
+
+    var conferenceCallInfo =
+        'https://warm-harbor-4491.herokuapp.com/conferenceRoom?room=test';
 
     twilioClient.makeCall({
-        to: req.body.patientNum,
-        from: '+14506667788',
-        url: 'https://warm-harbor-4491.herokuapp.com/'
+        to: patientsNumber,
+        from: twilioNumber,
+        url: conferenceCallInfo
     }, function(err, responseData) {
+        console.log(err);
         console.log(responseData.from);
     });
 
     twilioClient.makeCall({
-        to: req.body.doctorNum,
-        from: '+14506667788',
-        url: 'https://warm-harbor-4491.herokuapp.com'
+        to: doctorsNumber,
+        from: twilioNumber,
+        url: conferenceCallInfo
     }, function(err, responseData) {
+        console.log(err);
         console.log(responseData.from);
     });
+
+    res.send('calls made');
 });
 
 app.post('/twilio', function(request, response) {
