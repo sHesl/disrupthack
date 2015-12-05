@@ -1,23 +1,26 @@
 var express = require('express'),
 	bodyparser = require('body-parser'),
     main = require('./server/main'),
-    twilio = require('./server/twilio');
+    twilio = require('twilio');
 
 var app = express();
 
 app.use(bodyparser.json);
 app.use(bodyparser.urlencoded({ extended: true }));
 
+app.set('TWILIO_AUTH_TOKEN', '7c05dff31faa2c7cc957a3e57526b99e');
+
 app.get('/', function(req, res) {
 	res.send('Hello world');
-}); 
+});
 
-app.get('/textGeorge', function(req, res) {
-	twilio.sendText('+447756068326', 'hello George :)');
-}); 
-
-app.post('/twilio', function(req, res) {
-	twilio.recieveText(req, res);
+app.post('/twilio', twilio.webhook({
+    url:'https://mysterious-lowlands-1666.herokuapp.com/twilio',
+    protocol: 'https'
+}), function(request, response) {
+    var twiml = new twilio.TwimlResponse();
+    twiml.message('This HTTP request came from Twilio!');
+    response.send(twiml);
 });
 
 app.listen(3000);
