@@ -3,8 +3,7 @@ var express = require('express'),
     twilio = require('twilio');
 
 var app = express();
-app.set('TWILIO_ACCOUNT_SID', 'AC5a7faa72917a998b94a7eaa2e35b76b3');
-app.set('TWILIO_AUTH_TOKEN', '7c05dff31faa2c7cc957a3e57526b99e');
+process.env.TWILIO_AUTH_TOKEN = '7c05dff31faa2c7cc957a3e57526b99e';
 
 app.get('/', function(req, res) {
 	res.send('Hello world');
