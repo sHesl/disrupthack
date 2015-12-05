@@ -10,10 +10,11 @@
 angular.module('mainApp')
     .controller('MainCtrl', function($scope, $http) {
         $scope.message = 'Hello World!';
+        var address = '1600+Amphitheatre+Parkway,+Mountain+View,+CA';
         
         $http({
             method : 'GET',
-            url : 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyC0aV6tMNaki-zrNaq7Ch9EwaSgX1gueuo'
+            url : 'https://maps.googleapis.com/maps/api/geocode/json?address='+ address +'&key=AIzaSyDPemc_No5ae1c9PlCvchMq16ceDrb9Ed0'
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
