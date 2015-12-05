@@ -4,11 +4,13 @@ module.exports = {
 	getHealthCareAdvice: getHealthCareAdvice
 }
 
-var url = 'http://disruptlondon2015.appspot.com/?text=';
+var watsonUrl = 'http://disruptlondon2015.appspot.com/?text=';
 
-function getHealthCareAdvice(inputText, cb) {
+function getHealthCareAdvice(twilioPostBody, cb) {
 
-	http.get(url + inputText, function(watsonReponse) {
+	var watsonRequest = watsonUrl + twilioPostBody.body + '&number=' + twilioPostBody.from;
+	
+	http.get(watsonRequest, function(watsonReponse) {
 	  var str = '';
 
 	  watsonReponse.on('data', function(chunk) {

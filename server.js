@@ -17,7 +17,7 @@ app.post('/twilio', function(request, response) {
      
     var twiml = new twilio.TwimlResponse();
 
-    watson.getHealthCareAdvice(request.body.body, function(result) {
+    watson.getHealthCareAdvice(request.body, function(result) {
         twiml.message(result);
 
         response.writeHead(200, {
