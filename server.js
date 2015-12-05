@@ -13,6 +13,8 @@ app.get('/', function(req, res) {
 app.post('/twilio', function(request, response) {
      
     var twiml = new twilio.TwimlResponse();
+    console.log(request.params);
+    console.log(request.message);
     console.log(request.params.message.body);
     console.log(request.message.body);
     console.log(request.params.message.Body);
