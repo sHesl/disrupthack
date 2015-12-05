@@ -18,14 +18,15 @@ app.post('/twilio', function(request, response) {
     var twiml = new twilio.TwimlResponse();
     console.log(request.params);
 
-    var textBody = watson.getHealthCareAdvice();
-    twiml.message(textBody);
+    watson.getHealthCareAdvice('test', function(result) {
+        twiml.message(result);
 
-    response.writeHead(200, {
-        'Content-Type': 'text/xml'
+        response.writeHead(200, {
+            'Content-Type': 'text/xml'
+        });
+        
+        response.end(twiml.toString());
     });
-    
-    response.end(twiml.toString());
 });
 
 app.listen(process.env.PORT || 3000);
