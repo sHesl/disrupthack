@@ -1,8 +1,11 @@
 var express = require('express'),
+    bodyParser = require('body-parser'),
     watson = require('./server/watson'),
     twilio = require('twilio');
 
 var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 process.env.TWILIO_ACCOUNT_SID = 'AC5a7faa72917a998b94a7eaa2e35b76b3';
 process.env.TWILIO_AUTH_TOKEN = '7c05dff31faa2c7cc957a3e57526b99e';
 
@@ -13,7 +16,7 @@ app.get('/', function(req, res) {
 app.post('/twilio', function(request, response) {
      
     var twiml = new twilio.TwimlResponse();
-    console.log(request.req);
+    console.log(request.params);
 
     var textBody = watson.getHealthCareAdvice();
     twiml.message(textBody);
