@@ -31,28 +31,33 @@ function createConferenceCallRoom(req, res) {
 }
 
 function connectDoctorAndPatient(req, res) {
-    var doctorsNumber = '+447756068326';
-    var patientsNumber = '07941147361';
+    var doctorsNumber = req.body.doctorsNumber;
+    var patientsNumber = req.body.patientsNumber;
     var twilioNumber = '+441547220127';
 
-    var conferenceCallInfo = 'https://warm-harbor-4491.herokuapp.com/conferenceRoom?room=test';
+    var uniqueRoomName = parseInt(doctorsNumber).toString() + parseInt(patientsNumber).toString();
+    var conferenceCallRoom = 'https://warm-harbor-4491.herokuapp.com/conferenceRoom?room=' + uniqueRoomName;
 
     twilioClient.makeCall({
         to: patientsNumber,
         from: twilioNumber,
-        url: conferenceCallInfo
+        url: conferenceCallRoom
     }, function(err, responseData) {
-        console.log(err);
-        console.log(responseData.from);
+        if (err) {
+    		console.log(err);
+        	console.log(responseData.from);
+    	}
     });
 
     twilioClient.makeCall({
         to: doctorsNumber,
         from: twilioNumber,
-        url: conferenceCallInfo
+        url: conferenceCallRoom
     }, function(err, responseData) {
-        console.log(err);
-        console.log(responseData.from);
+    	if (err) {
+    		console.log(err);
+        	console.log(responseData.from);
+    	}
     });
 
     res.send('connecting ' + doctorsNumber + ' to ' + patientsNumber);
