@@ -6,7 +6,7 @@ var app = express();
 process.env.TWILIO_AUTH_TOKEN = '7c05dff31faa2c7cc957a3e57526b99e';
 
 app.get('/', function(req, res) {
-	res.send('Hello world');
+	res.send(process.env.TWILIO_AUTH_TOKEN);
 });
 
 app.post('/twilio', twilio.webhook({
