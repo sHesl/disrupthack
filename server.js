@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
 
 app.post('/twilio', twilio.webhook({
     url:'https://warm-harbor-4491.herokuapp.com/twilio',
-    protocol: 'https'
+    protocol: 'http'
 }), function(request, response) {
      
     var twiml = new twilio.TwimlResponse();
