@@ -60,7 +60,7 @@ function connectDoctorAndPatient(req, res) {
 function sendMedicalAdvice(req, res) {
     var twiml = new twilio.TwimlResponse();
 
-    watson.getHealthCareAdvice(request.body, function(result) {
+    watson.getHealthCareAdvice(req.body, function(result) {
         twiml.message(result);
         res.writeHead(200, { 'Content-Type': 'text/xml' });
         res.end(twiml.toString());
