@@ -13,9 +13,15 @@ app.post('/twilio', twilio.webhook({
     url:'https://warm-harbor-4491.herokuapp.com/twilio',
     protocol: 'https'
 }), function(request, response) {
+     
     var twiml = new twilio.TwimlResponse();
     twiml.message('This HTTP request came from Twilio!');
-    response.send(twiml);
+
+    response.writeHead(200, {
+        'Content-Type': 'text/xml'
+    });
+    
+    response.end(twiml);
 });
 
 app.listen(process.env.PORT || 3000);
