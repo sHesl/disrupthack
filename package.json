@@ -6,6 +6,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.4.8",
+    "angular-resource": "^1.4.8",
+    "angular-route": "^1.4.8",
+    "angular-sanitize": "^1.4.8",
     "body-parser": "^1.14.1",
     "bson": "^0.4.19",
     "express": "^4.13.3",
