@@ -13,7 +13,8 @@ app.get('/', function(req, res) {
 app.post('/twilio', function(request, response) {
      
     var twiml = new twilio.TwimlResponse();
-    console.log(JSON.stringify(request));
+    console.log(request.params.Body);
+    console.log(request.Body);
     var textBody = watson.getHealthCareAdvice();
     twiml.message(textBody);
 
