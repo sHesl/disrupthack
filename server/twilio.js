@@ -1,4 +1,5 @@
-var twilio = require('twilio');
+var twilio = require('twilio'),
+	watson = require('./server/watson');
 
 process.env.TWILIO_ACCOUNT_SID = 'AC5a7faa72917a998b94a7eaa2e35b76b3';
 process.env.TWILIO_AUTH_TOKEN = '7c05dff31faa2c7cc957a3e57526b99e';

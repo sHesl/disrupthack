@@ -1,6 +1,5 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    watson = require('./server/watson'),
     main = require('./server/main'),
     userInfo = require('./server/userInformation'),
     path = require('path'),
