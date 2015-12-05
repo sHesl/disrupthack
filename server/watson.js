@@ -3,5 +3,5 @@ module.exports = {
 }
 
 function getHealthCareAdvice() {
-	return 'this is some life saving advice :)';
+	return 'this is some life saving advice!!!!';
 }
