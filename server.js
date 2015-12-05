@@ -2,6 +2,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     watson = require('./server/watson'),
     main = require('./server/main'),
+    userInfo = require('./server/userInformation'),
     path = require('path'),
     twilio = require('twilio');
 
@@ -19,6 +20,12 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.get('/', function(req, res) {
     res.send(process.env.TWILIO_ACCOUNT_SID + ' / ' + process.env.TWILIO_AUTH_TOKEN);
 });
+
+app.route('/getAllUserInfo/:location')
+    .get(userInfo.getAllUserInfo);
+
+app.route('/getUserData/:userID')
+    .get(userInfo.getUserData);
 
 app.post('/twilio', function(request, response) {
      
