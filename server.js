@@ -4,12 +4,6 @@ var express = require('express'),
     twilio = require('./server/twilio'),
     userInfo = require('./server/userInformation');
 
-var io = require('socket.io')(80);
-
-io.on('connection', function(socket) {
-    console.log('connected to websockets');
-});
-
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
