@@ -15,10 +15,10 @@ angular.module('mainApp')
         
         function initApp(location){
             initializeMap(location.coords.latitude, location.coords.longitude);
+            getAllUsersList();
         }
         
         function initializeMap(lat, lng) {
-            console.log('lat = '+lat+' lng = '+lng);
             var mapCanvas = document.getElementById('map');
             var mapOptions = {
                 center: new google.maps.LatLng(lat, lng),
@@ -27,6 +27,19 @@ angular.module('mainApp')
             };
             var map = new google.maps.Map(mapCanvas, mapOptions);
             dropPinOnMap(map, lat, lng);
+        }
+        
+        function getAllUsersList(){
+            $http({
+                method : 'GET',
+                url : '/getAllUserInfo/local'
+            }).then(function successCallback(response){
+                $scope.peopleInNeed = response.data.data;
+                console.log($scope.peopleInNeed);
+            }, function errorCallback(response) {
+                console.log('error');
+                console.log(response);
+            });
         }
         
         function addressToCoords(address){
