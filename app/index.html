@@ -6,7 +6,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {}
+    </script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">-->
   </head>
   <body ng-app="mainApp">
     <!--[if lte IE 8]>
@@ -15,7 +19,8 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-    <div ng-view=""></div>
+      <div class="header"><img src="images/medicsmslogo.png" alt="Site logo"></div>
+      <div ng-view=""></div>
     </div>
 
     <script src="/node_modules/angular/angular.js"></script>

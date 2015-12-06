@@ -1,0 +1,31 @@
+body{
+	margin-top: 0;
+}
+
+.container {
+	width: 100vw;
+}
+
+.header{
+	height: 6vh;
+	width: 98%;
+	background-color: #292929;
+}
+
+.header img{
+	height: 6vh;
+}
+
+.mapDiv{
+	width: 74%;
+	height: 90vh;
+	float: left;
+	background-color: green;
+}
+
+.listDiv{
+	width: 24%;
+	height: 90vh;
+	float: left;
+	background-color: palevioletred;
+}
