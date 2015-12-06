@@ -33,9 +33,9 @@ var wss = new WebSocketServer({server: server});
 wss.on('connection', function(ws) {
   var id = setInterval(function() {
     ws.send(JSON.stringify(new Date()), function() {  })
-  }, 1000)
+  }, 1000);
 
-  console.log('websocket connection open')
+  console.log('websocket connection open');
 
   ws.on('close', function() {
     console.log('websocket connection close')
