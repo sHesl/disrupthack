@@ -1,8 +1,8 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    userInfo = require('./server/userInformation'),
     path = require('path'),
-    twilio = require('./server/twilio');
+    twilio = require('./server/twilio'),
+    userInfo = require('./server/userInformation');
 
 var app = express();
 
