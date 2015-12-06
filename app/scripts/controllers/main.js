@@ -15,7 +15,6 @@ angular.module('mainApp')
         
         function initApp(location){
             initializeMap(location.coords.latitude, location.coords.longitude);
-            getAllUsersList();
         }
         
         function initializeMap(lat, lng) {
@@ -27,14 +26,16 @@ angular.module('mainApp')
             };
             var map = new google.maps.Map(mapCanvas, mapOptions);
             dropPinOnMap(map, lat, lng);
+            getAllUsersList(map);
         }
         
-        function getAllUsersList(){
+        function getAllUsersList(map){
             $http({
                 method : 'GET',
                 url : '/getAllUserInfo/local'
             }).then(function successCallback(response){
                 $scope.peopleInNeed = response.data.data;
+                dropAllPins(map);
                 console.log($scope.peopleInNeed);
             }, function errorCallback(response) {
                 console.log('error');
@@ -42,7 +43,7 @@ angular.module('mainApp')
             });
         }
         
-        function addressToCoords(address){
+        function addressToCoords(map, address, callback){
             $http({
                 method : 'GET',
                 url : 'https://maps.googleapis.com/maps/api/geocode/json?address='+ address +'&key=AIzaSyDPemc_No5ae1c9PlCvchMq16ceDrb9Ed0'
@@ -55,7 +56,7 @@ angular.module('mainApp')
                     'lng' : location.lng
                 };
                 
-                return locObject;
+                callback(map, locObject);
             }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
@@ -64,8 +65,19 @@ angular.module('mainApp')
                     'lat' : 44.5403,
                     'lng' : -78.5463
                 };
-                return locObject;
+                
+                callback(locObject);
             });    
+        }
+        
+        function pinsCallback(map, object){
+            dropPinOnMap(map, object.lat, object.lng);
+        }
+        
+        function dropAllPins(map){
+            for(var i=0; i<$scope.peopleInNeed.length;i++){
+                addressToCoords(map, $scope.peopleInNeed[i].LOCATION, pinsCallback);
+            }
         }
         
         function dropPinOnMap(map, lat, lng){
