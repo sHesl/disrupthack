@@ -2,7 +2,6 @@ body{
 	font-family: 'Lato', sans-serif;
 	margin-top: 0;
 	margin-left: 0px;
-	overflow: hidden;
 }
 
 .container {
@@ -21,7 +20,7 @@ body{
 
 .mapDiv{
 	width: 75%;
-	height: 90vh;
+	height: 96vh;
 	float: left;
 	background-color: green;
 }
