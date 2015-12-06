@@ -1,6 +1,5 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    main = require('./server/main'),
     userInfo = require('./server/userInformation'),
     path = require('path'),
     twilio = require('./server/twilio');
