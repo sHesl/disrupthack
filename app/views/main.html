@@ -1,25 +1,23 @@
 <div id="map" class="mapDiv"></div>
 <div class="listDiv">
 	<div class="patientList">
-		<ul>
-			<li ng-repeat="user in peopleInNeed">
-				<span>Date: {{user.DATE}}</span>
-				<span>Location: {{user.LOCATION}}</span>
-				<span>Phone: {{user.PHONE}}</span>
-				<span>Symptoms: {{user.SYMPTOM}}</span>
-				<span>Triage: {{user.TRIAGE}}</span>
-			</li>
-		</ul>
+		<div class="patientDiv" ng-repeat="user in peopleInNeed">
+			<span>Date: {{user.DATE}}</span>
+			<span>Location: {{user.LOCATION}}</span>
+			<span>Phone: {{user.PHONE}}</span>
+			<span>Symptoms: {{user.SYMPTOM}}</span>
+			<span>Triage: {{user.TRIAGE}}</span>
+		</div>
 	</div>
-	<div class="pollingText">
-		<span>Listening for MedicSMS texts</span>
-	</div>
-	<div class="pollingAnimationDiv">
-		<span class="circle growAndShrinkOne"></span>
-		<span class="circle growAndShrinkTwo"></span>
-		<span class="circle growAndShrinkThree"></span>
-		<span class="circle growAndShrinkFour"></span>
-		<span class="circle growAndShrinkFive"></span>
-		<span class="circle growAndShrinkSix"></span>
-	</div>
+</div>
+<div class="pollingText">
+	<span>Listening for MedicSMS texts</span>
+</div>
+<div class="pollingAnimationDiv">
+	<span class="circle growAndShrinkOne"></span>
+	<span class="circle growAndShrinkTwo"></span>
+	<span class="circle growAndShrinkThree"></span>
+	<span class="circle growAndShrinkFour"></span>
+	<span class="circle growAndShrinkFive"></span>
+	<span class="circle growAndShrinkSix"></span>
 </div>
