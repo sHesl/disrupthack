@@ -32,12 +32,40 @@ body{
 	background-color: #FFFFFF;
 }
 
+.list-row {
+	display:inline-block;
+	width: 100%;
+}
+
+.list-left {
+	width:auto;
+	float:left;
+}
+
+.list-right {
+	float:right;
+}
+
+.list-title {
+	font-size:18px;
+	padding:8px;}
+
+.list-filters { padding:8px; }
+
 .patientDiv {
 	border: solid 1px #ddd;
     width: 93%;
     margin: 5px auto;
-    padding: 0px;
+    padding: 10px;
     box-shadow: 1px 1px 1px #ddd;
+}
+
+.pat-div-triage{
+	font-size: 1.5em;
+}
+
+.pat-div-title{
+	color: #8c8c8c;
 }
 
 .pollingText {

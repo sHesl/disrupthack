@@ -2,11 +2,20 @@
 <div class="listDiv">
 	<div class="patientList">
 		<div class="patientDiv" ng-repeat="user in peopleInNeed">
-			<span>Date: {{user.DATE}}</span>
-			<span>Location: {{user.LOCATION}}</span>
-			<span>Phone: {{user.PHONE}}</span>
-			<span>Symptoms: {{user.SYMPTOMS}}</span>
-			<span>Triage: {{user.TRIAGE}}</span>
+			<div class="list-row">
+				<div class="list-left">
+					<div class="pat-div-triage">{{user.TRIAGE}}</div>
+					<div><span class="pat-div-symptoms">Symptoms: </span>{{user.SYMPTOMS}}</div>
+					<div><span class="pat-div-phone">Phone: </span>{{user.PHONE}}</div>
+					<div class="pat-div-title">{{user.DATE | date:'medium'}}</div>
+					<div class="pat-div-title">{{user.LOCATION}}</div>
+				</div>
+				<div class="list-right">
+					<div class="list-title">CELL2</div>
+					<div class="list-filters">CELL3
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
