@@ -11,8 +11,16 @@
 					<div class="pat-div-title">{{user.LOCATION}}</div>
 				</div>
 				<div class="list-right">
-					<div class="list-title">CELL2</div>
-					<div class="list-filters">CELL3
+					<div class="triage-icon"
+						 ng-class="{'choking': user.TRIAGE == 'choking'
+						 , 'shock': user.TRIAGE == 'shock'
+						 , 'heartattack': user.TRIAGE == 'heartattack'
+						 , 'burn': user.TRIAGE == 'burn'
+						 , 'bleeding': user.TRIAGE == 'bleeding'
+						 , 'electrocution': user.TRIAGE == 'electrocution'
+						 , 'anaphylaxis': user.TRIAGE == 'anaphylaxis'
+						 }"></div>
+					<div class="list-filters">
 					</div>
 				</div>
 			</div>
