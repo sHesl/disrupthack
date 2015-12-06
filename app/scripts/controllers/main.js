@@ -96,7 +96,7 @@ angular.module('mainApp')
                 infowindow.open(map, marker);
             });
             
-            $scope.peopleInNeed.push(marker);
+            // $scope.peopleInNeed.push(marker);
         }
     });
     
