@@ -15,6 +15,7 @@ exports.getAllUserInfo = function(req, response){
 		});
 
 		res.on('end', function() {
+			console.log(str);
 			console.log("[evfService] Got user info: "+str);
 			response.end(str);
 		});
