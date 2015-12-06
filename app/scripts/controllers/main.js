@@ -9,7 +9,6 @@
  */
 angular.module('mainApp')
     .controller('MainCtrl', function($scope, $http) {
-        var address = '30 Park Hill, W5 2JN';
         $scope.peopleInNeed = [];
         
         navigator.geolocation.getCurrentPosition(initApp);
@@ -57,7 +56,7 @@ angular.module('mainApp')
         }
         
         function dropPinOnMap(map, lat, lng){
-            var contentString = '<input id="callPatientBtn" type="button" data-doctor="+447756068326" data-patient="+447941147361" value="Call Patient">';
+            var contentString = '<input onclick="changeHandler()" id="callPatientBtn" type="button" data-doctor="+447756068326" data-patient="+447941147361" value="Call Patient">';
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
@@ -74,6 +73,31 @@ angular.module('mainApp')
             
             $scope.peopleInNeed.push(marker);
         }
-        
-        
     });
+    
+    function changeHandler(){
+        var button = document.getElementById('callPatientBtn');
+        var doctorNumber = button.getAttribute('data-doctor');
+        var patientNumber = button.getAttribute('data-patient');
+        
+        var xmlhttp = new XMLHttpRequest();
+
+        var url = 'https://warm-harbor-4491.herokuapp.com/call';
+        var params = 'doctorsNumber=' + doctorNumber + '&patientsNumber=' + patientNumber;
+        xmlhttp.open('POST', url, true);
+        
+        //Send the proper header information along with the request
+        xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        // xmlhttp.setRequestHeader('Content-length', params.length);
+        // xmlhttp.setRequestHeader('Connection', 'close');
+        
+        xmlhttp.onreadystatechange = function() {//Call a function when the state changes.
+            if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                console.log(xmlhttp.responseText);
+            }
+        };
+        
+        xmlhttp.send(params);
+        
+        console.log(doctorNumber + ' ' + patientNumber);
+    };
