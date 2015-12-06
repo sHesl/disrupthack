@@ -1,8 +1,14 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    userInfo = require('./server/userInformation'),
     path = require('path'),
-    twilio = require('./server/twilio');
+    twilio = require('./server/twilio'),
+    userInfo = require('./server/userInformation');
+
+var io = require('socket.io')(80);
+
+io.on('connection', function(socket) {
+    console.log('connected to websockets');
+});
 
 var app = express();
 
