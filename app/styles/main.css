@@ -50,9 +50,23 @@ body{
 
 .list-title {
 	font-size:18px;
-	padding:8px;}
+	padding:8px;
+}
 
-.list-filters { padding:8px; }
+.list-filters{
+	width: 100%;
+}
+
+.call-patient-btn {
+	width: 40px;
+	height: 40px;
+	margin-top: 50%;
+	margin-left: 6px;
+	background-image: url('../images/phonecall.png');
+	background-size: contain;
+	border-radius: 10px;
+	background-color: ghostwhite;
+}
 
 .patientDiv {
 	border: solid 1px #ddd;
