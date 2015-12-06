@@ -50,9 +50,10 @@ body{
 	display: inline-block;
 	float: right;
 	text-align: center;
-	color: #fff;
-	margin-top: 10px;
-	margin-right: 5px;
+	color: #E0E0E0;
+	margin-top: 6px;
+	margin-right: 10px;
+	font-size: 1.3em;
 }
 
 .doc {
