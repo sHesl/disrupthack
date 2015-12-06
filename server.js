@@ -6,6 +6,7 @@ var express = require('express'),
     twilio = require('./server/twilio');
 
 var app = express();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/app')));
