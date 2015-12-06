@@ -57,7 +57,7 @@ angular.module('mainApp')
         }
         
         function dropPinOnMap(map, lat, lng){
-            var contentString = '<h1>Hello funky message</h1>';
+            var contentString = '<input id="callPatientBtn" type="button" data-doctor="+447756068326" data-patient="+447941147361" value="Call Patient">';
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
